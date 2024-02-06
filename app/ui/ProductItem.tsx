@@ -3,39 +3,82 @@
 import Image from "next/image";
 import { Bookmark, Heart } from "lucide-react";
 import { useState } from "react";
+import Link from "next/link";
+import { Rating, ThinStar } from "@smastrom/react-rating";
+import { Product } from "@/data/items";
+import { products } from "../../data/items";
 
-const ProductItem = () => {
+const myStyles = {
+    itemShapes: ThinStar,
+    activeFillColor: "#ffb700",
+    inactiveFillColor: "#fff",
+};
+
+const ProductItem: React.FC<Product> = ({
+    name,
+    brand,
+    price,
+    rating,
+    image,
+    numReviews,
+}) => {
     const [isBookmarked, setIsBookmarked] = useState(false);
 
     return (
-        <section className="relative inline-flex flex-col gap-y-2 items-center rounded-lg overflow-hidden w-[250px] h-[350px] shadow-lg bg-[#232323] p-2">
-            <Image
-                src={"https://images.pexels.com/photos/18104/pexels-photo.jpg"}
-                alt={"Laptop"}
-                width={250}
-                height={250}
-                priority={true}
-                className="object-contain w-full"
-            />
-            <div className="p-2 flex flex-col gap-3 justify-between flex-1">
-                <h5 className="font-medium text-base ">
-                    Apple Macbook Pro 13 inch 16 GB ram 512 GB storage
+        <section className="relative flex flex-col gap-y-2 items-center rounded-lg  w-[250px] h-[350px] shadow-lg bg-[#232323] p-2">
+            <div className="h-[250px] w-full relative">
+                <Image
+                    src={image}
+                    alt={"Laptop"}
+                    fill
+                    sizes="100vw"
+                    priority={true}
+                    className="object-cover rounded-lg"
+                />
+            </div>
+
+            <div className="p-2 flex flex-col gap-3 justify-between w-full flex-1">
+                <h5
+                    title={name}
+                    className="font-medium truncate "
+                >
+                    {name}
                 </h5>
 
                 {/* Brand Link */}
                 <div className="flex flex-row justify-between items-center">
-                    <span className="bg-white text-black rounded-3xl px-2 text-[14px] font-semibold">
-                        Apple
+                    <Link
+                        href={`/brand/${brand.toLowerCase()}`}
+                        className="bg-white text-black rounded-3xl px-2 text-[14px] font-semibold"
+                    >
+                        {brand}
+                    </Link>
+                    <small className="font-semibold text-[14px]">
+                        $ {price}
+                    </small>
+                </div>
+
+                <div className="flex flex-col ">
+                    <span className="text-sm">
+                        {numReviews} {numReviews > 1 ? "reviews" : "review"}
                     </span>
-                    <small className="font-semibold text-[14px]">$ 28,99</small>
+                    <div className="flex flex-row items-center justify-start gap-2">
+                        <Rating
+                            style={{ maxWidth: 90 }}
+                            value={rating}
+                            readOnly
+                            itemStyles={myStyles}
+                        />
+                        <small>{rating} out 5</small>
+                    </div>
                 </div>
 
                 {/* Add to cart button */}
-                <div className="flex flex-col">
+                {/* <div className="flex flex-col">
                     <button className="text-sm font-medium bg-primary rounded-lg py-[4px] hover:bg-primary/80 active:scale-95 ">
                         Add to cart
                     </button>
-                </div>
+                </div> */}
             </div>
 
             {/* Add to favorite button */}

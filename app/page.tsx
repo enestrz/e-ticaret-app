@@ -1,10 +1,17 @@
-import Button from "./ui/Button";
 import ProductItem from "./ui/ProductItem";
+import { products } from "@/data/items"; // Importing the products from the data folder
 
 export default function Home() {
     return (
-        <main className="flex flex-col items-center justify-between p-24">
-            <ProductItem />
+        <main className="p-24 grid grid-flow-col auto-cols-min gap-4 ">
+            {products.map((product) => {
+                return (
+                    <ProductItem
+                        key={product.id}
+                        {...product}
+                    />
+                );
+            })}
         </main>
     );
 }

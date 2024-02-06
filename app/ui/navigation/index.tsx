@@ -7,9 +7,12 @@ const Navigation = () => {
     return (
         <nav className="flex flex-row justify-between  sm:justify-around items-center p-2 shadow-sm">
             {/* Logo */}
-            <h4 className="text-nowrap text-xl font-light leading-none">
+            <Link
+                href={"/"}
+                className="text-nowrap text-xl font-light leading-none"
+            >
                 E Ticaret Logo
-            </h4>
+            </Link>
 
             {/* Search Bar */}
             <SearchBar />

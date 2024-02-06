@@ -1,17 +1,7 @@
-"use client";
-
 import Image from "next/image";
-import { Bookmark, Heart } from "lucide-react";
-import { useState } from "react";
+import { Bookmark, Heart, StarIcon } from "lucide-react";
 import Link from "next/link";
-import { Rating, ThinStar } from "@smastrom/react-rating";
 import { Product } from "@/data/items";
-
-const myStyles = {
-    itemShapes: ThinStar,
-    activeFillColor: "#ffb700",
-    inactiveFillColor: "#fff",
-};
 
 const ProductItem: React.FC<Product> = ({
     id,
@@ -21,9 +11,8 @@ const ProductItem: React.FC<Product> = ({
     rating,
     image,
     numReviews,
+    stock,
 }) => {
-    const [isBookmarked, setIsBookmarked] = useState(false);
-
     return (
         <div className="relative flex flex-col gap-y-2 items-center rounded-lg w-[270px] h-[350px] shadow-lg bg-[#232323] p-2">
             <Link
@@ -62,19 +51,20 @@ const ProductItem: React.FC<Product> = ({
                     </small>
                 </div>
 
-                <div className="flex flex-col ">
-                    <span className="text-sm">
-                        {numReviews} {numReviews > 1 ? "reviews" : "review"}
-                    </span>
-                    <div className="flex flex-row items-center justify-start gap-2">
-                        <Rating
-                            style={{ maxWidth: 90 }}
-                            value={rating}
-                            readOnly
-                            itemStyles={myStyles}
-                        />
-                        <small>{rating} out 5</small>
-                    </div>
+                {/* Rating and reviews */}
+                <div className="flex flex-row items-center justify-start gap-1">
+                    <StarIcon className="size-4 fill-warning stroke-warning" />
+                    <small>
+                        {rating} by {numReviews}
+                        {numReviews > 1 ? "reviews" : "review"}
+                    </small>
+                </div>
+
+                {/* Stock */}
+                <div>
+                    <small>
+                        {stock ? `In stock: ${stock}` : "Out of stock"}
+                    </small>
                 </div>
 
                 {/* Add to cart button */}

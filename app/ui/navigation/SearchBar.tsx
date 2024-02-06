@@ -14,7 +14,7 @@ const SearchBar = () => {
             onSubmit={handleSubmit}
         >
             <input
-                className="w-full rounded-lg px-4 py-2 text-gray-200 focus:ring-2 focus:ring-gray-500 focus:outline-none"
+                className="w-full rounded-lg px-4 py-1 leading-7 text-gray-200 focus:ring-2 focus:ring-gray-500 focus:outline-none"
                 type="text"
                 placeholder="Search"
             />

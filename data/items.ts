@@ -79,7 +79,7 @@ export const products: Product[] = [
         description: "The ultimate gaming console",
         brand: "Sony",
         category: "Electronics",
-        image: "https://images.unsplash.com/photo-1622297845775-5ff3fef71d13?q=80&w=2014&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        image: "https://images.unsplash.com/photo-1486401899868-0e435ed85128?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         rating: 4.7,
         numReviews: 10,
         stock: 15,

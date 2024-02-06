@@ -29,7 +29,7 @@ const ProductItem: React.FC<Product> = ({
                 />
             </Link>
 
-            <div className="p-2 flex flex-col gap-3 justify-between w-full flex-1">
+            <div className="p-2 flex flex-col gap-3 w-full flex-1">
                 <Link
                     href={`/products/${id}`}
                     title={name}
@@ -52,20 +52,18 @@ const ProductItem: React.FC<Product> = ({
                 </div>
 
                 {/* Rating and reviews */}
-                <div className="flex flex-row items-center justify-start gap-1">
+                <div className="flex flex-row font-medium items-center justify-start gap-1">
                     <StarIcon className="size-4 fill-warning stroke-warning" />
                     <small>
-                        {rating} by {numReviews}
+                        {rating} by {numReviews}{" "}
                         {numReviews > 1 ? "reviews" : "review"}
                     </small>
                 </div>
 
                 {/* Stock */}
-                <div>
-                    <small>
-                        {stock ? `In stock: ${stock}` : "Out of stock"}
-                    </small>
-                </div>
+                <small className="ml-1 font-medium">
+                    {stock ? `In stock: ${stock}` : "Out of stock"}
+                </small>
 
                 {/* Add to cart button */}
                 {/* <div className="flex flex-col">

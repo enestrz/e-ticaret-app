@@ -6,7 +6,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { Rating, ThinStar } from "@smastrom/react-rating";
 import { Product } from "@/data/items";
-import { products } from "../../data/items";
 
 const myStyles = {
     itemShapes: ThinStar,
@@ -15,6 +14,7 @@ const myStyles = {
 };
 
 const ProductItem: React.FC<Product> = ({
+    id,
     name,
     brand,
     price,
@@ -25,25 +25,29 @@ const ProductItem: React.FC<Product> = ({
     const [isBookmarked, setIsBookmarked] = useState(false);
 
     return (
-        <section className="relative flex flex-col gap-y-2 items-center rounded-lg  w-[250px] h-[350px] shadow-lg bg-[#232323] p-2">
-            <div className="h-[250px] w-full relative">
+        <div className="relative flex flex-col gap-y-2 items-center rounded-lg w-[270px] h-[350px] shadow-lg bg-[#232323] p-2">
+            <Link
+                href={`/products/${id}`}
+                className="h-[250px] w-full relative"
+            >
                 <Image
                     src={image}
                     alt={"Laptop"}
                     fill
-                    sizes="100vw"
+                    sizes="100"
                     priority={true}
                     className="object-cover rounded-lg"
                 />
-            </div>
+            </Link>
 
             <div className="p-2 flex flex-col gap-3 justify-between w-full flex-1">
-                <h5
+                <Link
+                    href={`/products/${id}`}
                     title={name}
                     className="font-medium truncate "
                 >
                     {name}
-                </h5>
+                </Link>
 
                 {/* Brand Link */}
                 <div className="flex flex-row justify-between items-center">
@@ -85,7 +89,9 @@ const ProductItem: React.FC<Product> = ({
             <button className="inline-flex items-center justify-center appearance-none absolute top-3 right-3 group hover:bg-white/85 transition-colors rounded-full p-1">
                 <Bookmark className="group-hover:stroke-black group-active:stroke-red-600 group-active:fill-red-600 transition-colors" />
             </button>
-        </section>
+        </div>
     );
 };
 export default ProductItem;
+
+// Link href={`/products/${id}`}

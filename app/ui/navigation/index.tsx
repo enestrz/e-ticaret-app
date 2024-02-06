@@ -5,7 +5,7 @@ import ShoppingCartItem from "./ShoppingCartItem";
 
 const Navigation = () => {
     return (
-        <nav className="flex flex-row justify-between  sm:justify-around items-center p-2 shadow-sm">
+        <nav className="flex flex-row justify-between sm:justify-around items-center p-2 shadow-sm">
             {/* Logo */}
             <Link
                 href={"/"}
